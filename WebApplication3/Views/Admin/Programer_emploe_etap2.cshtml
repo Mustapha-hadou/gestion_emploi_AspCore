@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewData["Title"] = "Programer_emploe_etap2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+
+@using (Html.BeginForm("AjoutSeance", "Admin", FormMethod.Post, new { @class = "myForm" }))
+{
+
+
+    <input type="hidden" value=@ViewBag.semaine.Id name="idSemaine" />
+    <input type="hidden" value=@ViewBag.annee.Id name="idAnnee" />
+    <input type="hidden" value=@ViewBag.classe.Id name="idClasse" />
+    <input type="hidden" value=@ViewBag.seance.Id name="idSeance" />
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Programer Emploi</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="largeSelect">Local</label>
+
+                        @Html.DropDownList("Local", ViewBag.local as SelectList, "Sélectionner un local", new { @class = "form-control form-control-sm" })
+
+                    </div>
+                    <div class="form-group">
+                        <label for="largeSelect">
+                           Cours
+                        </label>
+
+                        @Html.DropDownList("Cours", ViewBag.cours as SelectList, "Sélectionner un cour", new { @class = "form-control form-control-sm" })
+
+                    </div>
+                     
+                </div>
+                <div class="card-action">
+                    @{
+                        if (ViewBag.AM == 0)
+                        {
+                            <button type="submit" name="Seance" class="btn btn-success" value="Ajouter">Ajouter</button>
+                        }
+                        else
+                        {
+                            <input type="hidden" value=@ViewBag.idDetailSeance name="idDetailSeance" />
+
+                            <button type="submit" name="Seance" class="btn btn-simple-primary" value="Modifier" style="background-color:red;">Modifier</button>
+
+                        }
+                    }
+                    <button type="reset" name="annuler" class="btn btn-danger">Annuler</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr class="table-success">
+                        <th scope="col">#</th>
+                        <th scope="col">Local</th>
+                        <th scope="col">Cours</th>
+                        <th scope="col">Professeur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int i = 0;
+                    @foreach (var sea in ViewBag.localNonDisp)
+                    {
+                        i=i+1;
+                        <tr>
+                            <th scope="row">@i</th>
+
+                            <td>
+                                @foreach (var local in ViewBag.allLocal)
+                                {
+                                    if (local.Id == @sea.LocalID)
+                                    {
+                                    @local.Nom
+                                    }
+                                }
+                            </td>
+                                @foreach (var cour in ViewBag.allCour)
+                                 {
+                                    if (cour.Id == @sea.CoursID)
+                                    {
+                                        <td>
+                                            @cour.Nom
+                                        </td>
+                                        <br />
+                                        @foreach (var prof in ViewBag.allProf)
+                                         {
+                                            if (prof.Id == @cour.ProfesseurID)
+                                            {
+                                              <td> @prof.UserName</td>
+                                            }
+                                         }
+
+                                    }
+                                 }          
+                        </tr>
+                    }
+                    }
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+}
+
+
+

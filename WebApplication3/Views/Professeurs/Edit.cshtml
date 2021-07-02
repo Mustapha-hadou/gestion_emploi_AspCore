@@ -1,0 +1,54 @@
+﻿@model miniPrpject_Asp.Models.Professeur
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card">
+            <form asp-action="Edit">
+
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Nom" class="control-label"></label>
+                        <input asp-for="Nom" class="form-control" ></input>
+                        <span asp-validation-for="Nom" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Prenom" class="control-label"></label>
+                        <input asp-for="Prenom" class="form-control" />
+                        <span asp-validation-for="Prenom" class="text-danger"></span>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" ></input>
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+
+
+                </div>
+                <div class="card-action">
+                    <center>
+                        <input class="btn btn-success" value="Modifier prof">
+
+
+                        <a asp-action="Index"> <input class="btn btn-info" value="Back to List"></a>
+                    </center>
+                </div>
+            </form>
+
+
+        </div>
+
+    </div>
+    <div class="col-md-8"></div>
+</div>
+
+
+
+ 
+

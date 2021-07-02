@@ -1,0 +1,58 @@
+﻿@model miniPrpject_Asp.Models.Local
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card">
+            <form asp-action="Edit">
+
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="TypeLocal" class="control-label"></label>
+                        <select asp-for="TypeLocal" class="form-control" asp-items="Html.GetEnumSelectList<TypeLocal>()"></select>
+                        <span asp-validation-for="TypeLocal" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Capacite" class="control-label"></label>
+                        <input asp-for="Capacite" class="form-control" />
+                        <span asp-validation-for="Capacite" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Nom" class="control-label"></label>
+                        <input asp-for="Nom" class="form-control" />
+                        <span asp-validation-for="Nom" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="localisation" class="control-label"></label>
+                        <select asp-for="localisation" class="form-control" asp-items="Html.GetEnumSelectList<Localisation>()"></select>
+                        <span asp-validation-for="localisation" class="text-danger"></span>
+                    </div>
+
+
+                </div>
+                <div class="card-action">
+                    <center>
+                        <input class="btn btn-success" value="Modifier Local">
+
+
+                        <a asp-action="Index"> <input class="btn btn-info" value="Back to List"></a>
+                    </center>
+                </div>
+            </form>
+
+
+        </div>
+
+    </div>
+    <div class="col-md-8"></div>
+</div>
+
+
+
+ 
+

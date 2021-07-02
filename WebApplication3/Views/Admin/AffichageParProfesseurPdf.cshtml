@@ -1,0 +1,76 @@
+﻿@model IEnumerable<miniPrpject_Asp.Models.infosSeance>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <title>AffichageParProfesseurPdf</title>
+</head>
+<body> 
+    <div class="row">
+        <div class="col-8">
+
+            <table class="table table-bordered">
+                <thead  >
+                    <tr>
+                        <th>
+
+                        </th>
+                        <th style="background-color:palevioletred;width:200px;">8-10</th>
+                        <th style="background-color:palevioletred;width:200px;">10-12</th>
+                        <th style="background-color:palevioletred;width:200px;">12-14</th>
+                        <th style="background-color:palevioletred;width:200px;">14-16</th>
+                        <th style="background-color:palevioletred;width:200px;">16-18</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ string[] tab = new string[] { "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi" };
+                        for (int i = 0; i < tab.Length; i++)
+                        {
+                            <tr>
+                                <th style="background-color:grey;width:200px;color:white;height:80px;text-align:center;">@tab[i]</th>
+                                @{int k = i * 5;
+                                    for (int j = k; j < k + 5; j++)
+                                    {
+                                                                <td style="background-color: papayawhip;width: 200px;text-align: center;">
+                                                                    @{ int cont = 1;
+                                                                        foreach (var line in Model)
+                                                                        {
+                                                                            if (@line.SeanceID == j + 1)
+                                                                            {
+                                                                                cont = 2;
+
+                                                                                @line.Local <br />
+                                                                                @line.Cours <br />
+                                                                                @line.Prof
+                                                                                @*@line.Cours.Classe.code*@
+                                                                            }
+                                                                        }
+                                                                        if (@cont == 1)
+                                                                        {
+
+                                                                        }
+                                                                    }
+                                                                </td>
+                                    }
+                                }
+
+                            </tr>
+                        }
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

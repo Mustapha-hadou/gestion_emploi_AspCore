@@ -1,0 +1,62 @@
+﻿
+
+
+
+
+
+@{
+    ViewData["Title"] = "ParLocal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("AffichageParLocal", "Admin", FormMethod.Post, new { @class = "myForm" }))
+{
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Emploi Par Local</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="largeSelect">
+                            @Html.Label("local", "Locaux :")
+                        </label>
+
+                        @Html.DropDownList("local", ViewBag.locals as SelectList, "Sélectionner un local", new { @class = "form-control form-control-sm" })
+
+                    </div>
+                    <div class="form-group">
+                        <label for="largeSelect">
+                            @Html.Label("semaine", "Semaine :")
+                        </label>
+
+                        @Html.DropDownList("semaine", ViewBag.semaines as SelectList, "Sélectionner une semaine", new { @class = "form-control form-control-sm" })
+
+                    </div>
+                    <div class="form-group">
+                        <label for="largeSelect">
+                            @Html.Label("annee", "Année universitaire :")
+                        </label>
+
+                        @Html.DropDownList("annee", ViewBag.annees as SelectList, "Sélectionner une année", new { @class = "form-control form-control-sm" })
+
+                    </div>
+                </div>
+                <div class="card-action">
+                    <input name="sub" type="submit" value="Afficher" class="btn btn-primary" />
+
+                    <input name="sub" type="submit" value="Generer le Pdf" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+

@@ -1,0 +1,93 @@
+﻿
+@model IEnumerable<miniPrpject_Asp.Models.DetailEmploi>
+@{
+    ViewData["Title"] = "AffichageParClasse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        @ViewBag.tail
+        <div class="card">
+            <table class="table table-striped table-striped-bg-default mt-4">
+                <thead>
+                    <tr>
+                        <th>
+
+                        </th>
+                        <th>8-10</th>
+                        <th>10-12</th>
+                        <th>12-14</th>
+                        <th>14-16</th>
+                        <th>16-18</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ string[] tab = new string[] { "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi" };
+                        for (int i = 0; i < tab.Length; i++)
+                        {
+                            <tr>
+                                <th>@tab[i]</th>
+                                @{int k = i * 5;
+                                    for (int j = k; j < k + 5; j++)
+                                    {
+                                                                <td>
+                                                                    @{ int cont = 1;
+                                                                        foreach (var line in Model)
+                                                                        {
+
+                                                                            if (@line.SeanceID == j + 1)
+                                                                            {
+                                                                                cont = 2;
+
+
+                                                                                foreach (var cour in ViewBag.cours)
+                                                                                {
+                                                                                    if (cour.Id == @line.CoursID)
+                                                                                    {
+                                                                                        @cour.Nom
+                                                                                        <br />        
+                                                                                        foreach (var niveau in ViewBag.niveau)
+                                                                                        {
+                                                                                            if (niveau.Id == @cour.ClasseID)
+                                                                                            {
+                                                                                                @niveau.code;
+                                                                                            }
+                                                                                        }
+
+                                                                                    }
+                                                                                }
+
+                                                                                <br />
+                                                                                foreach (var local in ViewBag.local)
+                                                                                {
+                                                                                    if (local.Id == @line.LocalID)
+                                                                                    {
+                                                                                        @local.Nom
+                                                                                    }
+                                                                                }
+
+
+
+
+                                                                            }
+                                                                        }
+                                                                        if (@cont == 1)
+                                                                        {
+
+                                                                        } }
+                                                                </td>
+                                    } }
+
+                            </tr>
+                        } }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

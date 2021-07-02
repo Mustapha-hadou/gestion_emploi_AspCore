@@ -1,0 +1,228 @@
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>  Espace Administrateur</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="~/ssets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/chartist.min.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="~/assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/assets/css/jquery.scrollbar.min.css">
+    <link rel="stylesheet" href="~/assets/css/ready.css">
+    <link rel="stylesheet" href="~/assets/css/demo.css">
+    <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main-header">
+            <div class="logo-header">
+                <a href="index.html" class="logo">
+                    Espace Administrateur
+                </a>
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+            </div>
+            <nav class="navbar navbar-header navbar-expand-lg" style="background-color:cadetblue">
+                <div class="container-fluid">
+
+
+                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+
+
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="../assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span style="color:white"> @Context.Session.GetString("username")</span></span> </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <div class="user-box">
+                                        <div class="u-img"><img src="../assets/img/profile.jpg" alt="user"></div>
+                                        <div class="u-text">
+                                            <h4>Welcome @Context.Session.GetString("username")</h4>
+                                            <p class="text-muted">rianhizrian@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i class="ti-user"></i> My Profile</a>
+                            </ul>
+                            <!-- /.dropdown-user -->
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="sidebar" style="color:Black;">
+            <div class="scrollbar-inner sidebar-wrapper">
+                <div class="user">
+
+                    <div class="info" style="margin-top:100px;">
+                        <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                            <span style="color:black">
+                                Gestion des Locaux
+                                <span class="caret"></span>
+                            </span>
+                        </a>
+                        <div class="clearfix"></div>
+
+                        <div class="collapse in" id="collapseExample" aria-expanded="true" style="">
+                            <ul class="nav">
+                                <li>
+                                    <a asp-area="" asp-controller="Locals" asp-action="Create">
+                                        <span class="link-collapse" style="color:black">Ajouter Local</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Locals" asp-action="Index">
+                                        <span class="link-collapse" style="color:black">Liste des Locaux</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="user">
+
+                    <div class="info">
+                        <a class="" data-toggle="collapse" href="#profExample" aria-expanded="true">
+                            <span style="color:black">
+                                Gestion des Prof
+                                <span class="caret"></span>
+                            </span>
+                        </a>
+                        <div class="clearfix"></div>
+
+                        <div class="collapse in" id="profExample" aria-expanded="true" style="">
+                            <ul class="nav">
+                                <li>
+                                    <a asp-area="" asp-controller="Professeurs" asp-action="Create">
+                                        <span class="link-collapse" style="color:black">Ajouter Prof</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Professeurs" asp-action="Index">
+                                        <span class="link-collapse" style="color:black">Liste des Prof</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+
+
+
+
+                <ul class="nav">
+
+                    <li class="nav-item">
+
+                        <div class="info">
+                            <a class="" data-toggle="collapse" href="#collapseExample1" aria-expanded="true">
+                                <span style="color:black">
+                                    Extraire Planning
+                                    <span class="caret"></span>
+                                </span>
+                            </a>
+                            <div class="clearfix"></div>
+
+                            <div class="collapse in" id="collapseExample1" aria-expanded="true" style="">
+                                <ul class="nav">
+                                    <li>
+                                        <a asp-area="" asp-controller="Admin" asp-action="ParLocal">
+                                            <span class="link-collapse" style="color:black">Par Local</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-area="" asp-controller="Admin" asp-action="ParProfesseur">
+                                            <span class="link-collapse" style="color:black">Par Professeur</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-area="" asp-controller="Admin" asp-action="ParClasse">
+                                            <span class="link-collapse" style="color:black">Par Classe</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="" asp-controller="Admin" asp-action="Programer_Emploi">
+                            <p style="color:black">Programmer Un Emploi</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="" asp-controller="Seance" asp-action="afficherEmploies">
+                            <p style="color:black">Listes des Emploi</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="" asp-controller="Admin" asp-action="Disponibilite">
+                            <p style="color:black">Locaux Disponibles</p>
+                        </a>
+                    </li>
+
+
+                </ul>
+                </div>
+            </div>
+        <div class="main-panel">
+            <div class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <nav class="pull-left">
+                <ul class="nav">
+                    <li class="nav-item">
+                        Projet ASP.Net Core
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </footer>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- Modal -->
+
+</body>
+
+<script src="~/assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="~/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="~/assets/js/core/popper.min.js"></script>
+<script src="~/assets/js/core/bootstrap.min.js"></script>
+<script src="~/assets/js/plugin/chartist/chartist.min.js"></script>
+<script src="~/assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"></script>
+<script src="~/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="~/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<script src="~/assets/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="~/assets/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>
+<script src="~/assets/js/plugin/chart-circle/circles.min.js"></script>
+<script src="~/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="~/assets/js/ready.js"></script>
+</html>

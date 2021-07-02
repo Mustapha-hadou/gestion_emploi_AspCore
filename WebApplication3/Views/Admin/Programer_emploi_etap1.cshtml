@@ -1,0 +1,125 @@
+﻿@model IEnumerable<miniPrpject_Asp.Models.DetailEmploi>
+@{
+    ViewData["Title"] = "Programer_emploi_etap1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table table-bordered" style="width:800px">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>8-10</th>
+            <th>10-12</th>
+            <th>12-14</th>
+            <th>14-16</th>
+            <th>16-18</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{ string[] tab = new string[] { "lundi", "mardi", "mercredi", "jedui", "vendredi", "samedi" };
+            for (int i = 0; i < tab.Length; i++)
+            {
+                <tr>
+                    <th>@tab[i]</th>
+                    @{int k = i * 5;
+                        for (int j = k; j < k + 5; j++)
+                        {
+                                        <th>
+                                            @{ int cont = 1;
+                                                foreach (var line in Model)
+                                                {
+                                                    if (@line.SeanceID == j + 1)
+                                                    {
+                                                        cont = 2;
+                                                        foreach (var cour in ViewBag.cours)
+                                                        {
+                                                            if (cour.Id == @line.CoursID)
+                                                            {
+                                                                @cour.Nom
+                                                                <br />
+                                                                foreach (var prof in ViewBag.prof)
+                                                                {
+                                                                    if (prof.Id == @cour.ProfesseurID)
+                                                                    {
+                                                                        @prof.UserName
+
+
+
+                                                                    }
+                                                                }
+
+                                                            }
+                                                        }
+
+                                                        <br />
+                                                        foreach (var local in ViewBag.local)
+                                                        {
+                                                            if (local.Id == @line.LocalID)
+                                                            {
+                                                                @local.Nom
+                                                            }
+                                                        }
+                                                        using (Html.BeginForm("Programer_emploe_etap2", "Admin", FormMethod.Post, new { @class = "myForm" }))
+                                                        {
+                                                            <input type="hidden" value=@line.Id name="idDetailSeance" />
+                                                            <input type="hidden" value=@ViewBag.semaine name="idSemaine" /><br />
+                                                            <input type="hidden" value=@ViewBag.annee name="idAnnee" /><br />
+                                                            <input type="hidden" value=@ViewBag.classe name="idClasse" /><br />
+                                                            <input type="hidden" value=@line.SeanceID name="idSeance" />
+
+                                                            <input id="btn" type="submit" value="Modifier" name="bout" />
+                                                        }
+
+
+                                                    }
+                                                }
+                                                if (@cont == 1)
+                                                {
+
+
+                                                    var x = j + 1;
+                                                    using (Html.BeginForm("Programer_emploe_etap2", "Admin", FormMethod.Post, new { @class = "myForm" }))
+                                                    {
+                                                        <input type="hidden" value=@ViewBag.semaine name="idSemaine" /><br />
+                                                        <input type="hidden" value=@ViewBag.annee name="idAnnee" /><br />
+                                                        <input type="hidden" value=@ViewBag.classe name="idClasse" /><br />
+                                                        <input type="hidden" value=@x name="idSeance" />
+                                                        <input id="btn" type="submit" value="Ajouter" name="bout" /> }
+                                                } }
+                                        </th>
+                        } }
+
+                </tr>
+
+            } }
+
+
+
+    </tbody>
+</table>
+@{
+    using (Html.BeginForm("statusEmploi", "Admin", FormMethod.Post, new { @class = "myForm" }))
+    {
+        
+        <input type="hidden" value=@ViewBag.id_emploii name="idEmploi" />
+        <input type="hidden" value=@ViewBag.semaine name="idsemaine" />
+        <input type="hidden" value=@ViewBag.annee name="idAnnee" />
+        <input type="hidden" value=@ViewBag.classe name="idClasse" />
+        <br />
+
+        <br />
+
+        <br />
+
+        <input id="btn" type="submit" value="valider" name="sub" />
+        <input id="btn" type="submit" value="supprmier" name="sub" />
+
+    }
+}
+
+
+

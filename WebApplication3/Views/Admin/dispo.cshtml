@@ -1,0 +1,35 @@
+﻿
+
+@model IEnumerable<miniPrpject_Asp.Models.Local>
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Les salles disponibles</h5>
+</div> 
+  
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="card">
+            <table class="table table-striped table-striped-bg-default mt-4">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayName("Nom du local ")
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nom)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div> 

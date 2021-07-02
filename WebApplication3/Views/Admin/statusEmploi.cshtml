@@ -1,0 +1,29 @@
+﻿@model IEnumerable<miniPrpject_Asp.Models.Semaine>
+@{
+    ViewData["Title"] = "statusEmploi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@{ <div style="text-align: center">
+    @using (Html.BeginForm("ConfermerEmploi", "Admin", FormMethod.Post, new { @class = "myForm" }))
+    {
+       <h1>@ViewBag.id_emploii</h1>
+        <input type="hidden" value=@ViewBag.id_emploii name="idEmploi" />
+        <input type="hidden" value=@ViewBag.annee name="idAnnee" />
+        <input type="hidden" value=@ViewBag.classe name="idClasse" />
+        <select class="mdb-select md-form align-content-center" name="semaines" size="13" aria-label="size 3 select example" multiple>
+            <option selected>selectionner les autres semaines </option>
+            @foreach (var line in Model)
+            {
+                <option value="@line.Id">@line.NomSemaine</option>
+            }
+        </select>
+        <br />
+        <br />
+        <input id="btn" type="submit" value="confermer" name="sub" />
+    }
+
+
+</div>
+
+}

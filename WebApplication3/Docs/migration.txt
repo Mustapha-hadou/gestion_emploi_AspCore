@@ -1,0 +1,2 @@
+﻿Add-Migration Initial -Context  WebApplication3.Data.ApplicationDbContext
+Update-Database Initial -Context WebApplication3.Data.ApplicationDbContext
